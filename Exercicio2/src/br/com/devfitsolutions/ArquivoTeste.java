@@ -14,7 +14,7 @@ public class ArquivoTeste {
 	    //int consoantes = entradaFormatada.read();
 	    
 	    int consoantes = 0;
-	    int vogais = 0, cont = 0, espaco =0, linhas = 0, enter =0;
+	    int vogais = 0, cont = 0, espaco =0, carcEsp = 0, enter =0;
 	    
 	    while( caracteres != -1){
 	    	System.out.print( (char)caracteres);
@@ -26,7 +26,7 @@ public class ArquivoTeste {
 	    		espaco++;
 	    	}
 	    	if (caracteres > 33 && caracteres <= 64 ){
-	    		linhas++;
+	    		carcEsp++;
 	    	}
 	    	/*if (caracteres == 32 || caracteres == 13){
 	    		palavra++;
@@ -39,14 +39,14 @@ public class ArquivoTeste {
 	    
 	    consoantes = cont - vogais;
 	    //palavra++;
-	    linhas++;
+	    carcEsp++;
 	    cont = cont - espaco - enter;
-	    consoantes = cont - espaco - linhas - vogais - 1;
+	    consoantes = cont - espaco - carcEsp - vogais - 1;
 	    System.out.printf("\nvogais: " +vogais+ "\n");
 	    System.out.println("consoantes: " +consoantes);
 	    System.out.println("espacos: " +espaco);
 	    //System.out.println("palavras: " +palavra);
-	    System.out.println("total de linhas: " +linhas);
+	    System.out.println("total de linhas: " +carcEsp);
 	    System.out.println("total de letras: " +cont);
 	}
 
