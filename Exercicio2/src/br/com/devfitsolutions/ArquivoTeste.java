@@ -46,7 +46,7 @@ public class ArquivoTeste {
 	    System.out.println("consoantes: " +consoantes);
 	    System.out.println("espacos: " +espaco);
 	    //System.out.println("palavras: " +palavra);
-	    System.out.println("total de linhas: " +carcEsp);
+	    System.out.println("total de Caracteres especiais: " +carcEsp);
 	    System.out.println("total de letras: " +cont);
 	}
 
