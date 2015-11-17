@@ -26,6 +26,8 @@ public class Exercicio2 {
 				System.out.printf("%s\n", linha);
 				contLinha++;  										// Contagem de linhas
 				linha = lerArquivo.readLine();
+				String palavras[] = linha.split(" ");
+				System.out.println(palavras[contLinha]);
 			}
 			arquivo.close();
 		} catch (IOException e){

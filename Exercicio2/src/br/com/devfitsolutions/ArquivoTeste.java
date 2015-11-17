@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 public class ArquivoTeste {
 
 	public static void main(String[] args) throws IOException{
-	    FileInputStream entrada = new FileInputStream("C:\\temp\\teste.txt");
+	    FileInputStream entrada = new FileInputStream("/Users/victorvianasantos/Downloads/Hirens/teste.txt");
 	    InputStreamReader entradaFormatada = new InputStreamReader(entrada);
 	    int caracteres = entradaFormatada.read();
 	    //int consoantes = entradaFormatada.read();
