@@ -1,45 +1,61 @@
 package br.com.devfitsolutions;
 
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.io.BufferedReader;
 
 public class ArquivoTeste2 {
 	
 	public static void main(String[] args) throws IOException{
+		Scanner entrada = new Scanner (System.in);
+		String nomeArquivo;
 		
-	    FileInputStream entrada = new FileInputStream("/Users/victorvianasantos/Downloads/Hirens/teste.txt");
-	    InputStreamReader entradaFormatada = new InputStreamReader(entrada);
-	    int caracter = entradaFormatada.read();
-	    int spaco = 0, vogais = 0, consoantes = 0, enter = 0, palavras = 0, linhas = 0, letras = 1, carcEsp = 0;
-	    
-	    while( caracter >= 1){
-	    	if (caracter == 97 || caracter == 101 || caracter == 105 || caracter == 111 || caracter == 117){
-	    		vogais++;
-	    	}
-	    	System.out.print( (char)caracter);
-	    	caracter = entradaFormatada.read();
-	    	if ( caracter == 32){
-	    		spaco++;
-	    	}
-	    	if (caracter == 10){
-	    		linhas++;
-	    		palavras++;
-	    	}
-	    	if (caracter > 33 && caracter <= 64 ){
-	    		carcEsp++;
-	    	}
-	    	letras++;
-	    }
-	    
-	    consoantes = letras - spaco - vogais - carcEsp - linhas - 1;
-	    palavras = spaco + linhas;
-	    
-	    System.out.println("\nEspaco: " +spaco);
-	    System.out.println("Vogais: " +vogais);
-	    System.out.println("Consoantes: " +consoantes);
-	    System.out.println("linhas: " +linhas);
-	    System.out.println("Letras: " +letras);
-	    System.out.println("palavras: " +palavras);
+		int contEspaco = 0;
+		int contVogais = 0;
+		int contConsoantes = 0;
+		int contLinha = 0;
+		int contPalavra = 0;
+		int i = 0;
+		
+		System.out.println("Informe o caminho do arquivo texto: ");
+		nomeArquivo = entrada.nextLine();
+		
+		try{
+			FileReader arqvuio = new FileReader(nomeArquivo);
+			BufferedReader lerArquivo = new BufferedReader(arqvuio);
+			
+			String linha = lerArquivo.readLine();
+			String[] palavra = linha.split(" ");
+			while (linha != null){
+				for	(i = 0; i < linha.length(); i++){
+					char caracter = linha.toLowerCase().charAt(i);
+					if (caracter == ' '){
+						contPalavra++;
+						contEspaco++;
+					} else if ((int) caracter >= 97 && (int) caracter <= 127){
+						if(caracter == 'a' || caracter == 'e'|| caracter == 'i' || caracter == 'o' || caracter == 'u'){
+							contVogais++;
+						} else {
+							contConsoantes++;
+						}
+					}
+				}
+				linha = lerArquivo.readLine();
+				contLinha++;
+			}		
+			arqvuio.close();
+		}catch (IOException e){
+			System.out.printf("Erro!", e.getMessage());
+		}
+		
+		System.out.println("Espaços: " +contEspaco);
+		System.out.println("Vogais: " +contVogais);
+		System.out.println("Consoantes: " +contConsoantes);
+		System.out.println("Linhas: " +contLinha);
+		System.out.println("Palavras: " +contPalavra);
+		System.out.println("Letras: " + (contConsoantes + contVogais));
 	}
 }
