@@ -28,7 +28,6 @@ public class ArquivoTeste2 {
 			BufferedReader lerArquivo = new BufferedReader(arqvuio);
 			
 			String linha = lerArquivo.readLine();
-			String[] palavra = linha.split(" ");
 			while (linha != null){
 				for	(i = 0; i < linha.length(); i++){
 					char caracter = linha.toLowerCase().charAt(i);
