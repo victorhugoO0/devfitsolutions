@@ -45,6 +45,7 @@ public class ArquivoTeste2 {
 				}
 				linha = lerArquivo.readLine();
 				contLinha++;
+				contPalavra++;
 			}		
 			arqvuio.close();
 		}catch (IOException e){
