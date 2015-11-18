@@ -2,16 +2,19 @@ package br.com.devfitsolutions;
 
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 
 public class ArquivoTeste2 {
 	
 	public static void main(String[] args) throws IOException{
 		Scanner entrada = new Scanner (System.in);
-		String nomeArquivo;
+		String nomeArquivo, destino;
 		
 		int contEspaco = 0;
 		int contVogais = 0;
@@ -20,16 +23,16 @@ public class ArquivoTeste2 {
 		int contPalavra = 0;
 		int i = 0;
 		
-		System.out.println("Informe o caminho do arquivo texto: ");
-		nomeArquivo = entrada.nextLine();
+		System.out.printf("Informe o caminho do arquivo texto: \n");
+		nomeArquivo = entrada.nextLine();		//armazena caminho informado pelo usuario
 		
 		try{
-			FileReader arqvuio = new FileReader(nomeArquivo);
-			BufferedReader lerArquivo = new BufferedReader(arqvuio);
+			FileReader arqvuio = new FileReader(nomeArquivo);	//entrada baseado em caracteres
+			BufferedReader lerArquivo = new BufferedReader(arqvuio);  	//classe que gera o buffer que será utilizado para realizar a leitura do arquivo txt.
 			
 			String linha = lerArquivo.readLine();
-			while (linha != null){
-				for	(i = 0; i < linha.length(); i++){
+			while (linha != null){		//Enquanto tiver linha vai rodar (valida se a variavel linha contem valor (caracteres))
+				for	(i = 0; i < linha.length(); i++){ 		//Verifica caracter por caracter
 					char caracter = linha.toLowerCase().charAt(i);
 					if (caracter == ' '){
 						contPalavra++;
@@ -51,11 +54,23 @@ public class ArquivoTeste2 {
 			System.out.printf("Erro!", e.getMessage());
 		}
 		
-		System.out.println("Espaços: " +contEspaco);
-		System.out.println("Vogais: " +contVogais);
-		System.out.println("Consoantes: " +contConsoantes);
-		System.out.println("Linhas: " +contLinha);
-		System.out.println("Palavras: " +contPalavra);
-		System.out.println("Letras: " + (contConsoantes + contVogais));
+		// Gravando o arquivo no caminho informado pelo usuario
+		
+		System.out.printf("Informe o caminho a gravar o arquivo: \n");
+		destino = entrada.nextLine(); 		//Armazena caminho informado pelo usuario
+		
+		FileWriter novoArquivo = new FileWriter(destino); //Cria
+		BufferedWriter gravarNovoArquivo = new BufferedWriter(novoArquivo); //Classe responsavel por gerar o Buffer que será utilizado para realizar a escrita do txt.
+		
+		gravarNovoArquivo.write("O arquivo aberto em " +nomeArquivo+ " possui:\n");
+		gravarNovoArquivo.write("Espaços em branco: \n" +contEspaco);
+		gravarNovoArquivo.write("Vogais: \n" +contVogais);
+		gravarNovoArquivo.write("Consoantes: \n" +contConsoantes);
+		gravarNovoArquivo.write("Palavras: \n" +contPalavra);
+		gravarNovoArquivo.write("Linhas: \n" +(contConsoantes + contVogais));
+		
+		gravarNovoArquivo.close();  // Fecha o arquivo com os dados gravados
+		System.out.println("O " +novoArquivo+ " foi gravado com sucesso!");
+		
 	}
 }
