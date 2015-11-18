@@ -62,15 +62,15 @@ public class ArquivoTeste2 {
 		FileWriter novoArquivo = new FileWriter(destino); //Cria
 		BufferedWriter gravarNovoArquivo = new BufferedWriter(novoArquivo); //Classe responsavel por gerar o Buffer que será utilizado para realizar a escrita do txt.
 		
-		gravarNovoArquivo.write("O arquivo aberto em " +nomeArquivo+ " possui:\n");
-		gravarNovoArquivo.write("Espaços em branco: \n" +contEspaco);
-		gravarNovoArquivo.write("Vogais: \n" +contVogais);
-		gravarNovoArquivo.write("Consoantes: \n" +contConsoantes);
-		gravarNovoArquivo.write("Palavras: \n" +contPalavra);
-		gravarNovoArquivo.write("Linhas: \n" +(contConsoantes + contVogais));
+		gravarNovoArquivo.write("O arquivo aberto em " +nomeArquivo+ " possui:\r\n");
+		gravarNovoArquivo.write("Espaços em branco: " +contEspaco+ "\r\n");
+		gravarNovoArquivo.write("Vogais: " +contVogais+ "\r\n");
+		gravarNovoArquivo.write("Consoantes: " +contConsoantes+ "\r\n");
+		gravarNovoArquivo.write("Palavras: " +contPalavra+ "\r\n");
+		gravarNovoArquivo.write("Linhas: " +(contConsoantes + contVogais)+ "\r\n");
 		
 		gravarNovoArquivo.close();  // Fecha o arquivo com os dados gravados
-		System.out.println("O " +novoArquivo+ " foi gravado com sucesso!");
+		System.out.println("Arquivo gravado com sucesso!");
 		
 	}
 }
