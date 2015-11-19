@@ -24,7 +24,7 @@ public class Exercicio2 {
 		int i = 0;
 		
 		try{
-			FileReader arqvuio = new FileReader("c:\\temp\\entrada.txt");	//entrada baseado em caracteres
+			FileReader arqvuio = new FileReader("/Users/victorvianasantos/Downloads/Hirens/teste.txt");	//entrada baseado em caracteres
 			BufferedReader lerArquivo = new BufferedReader(arqvuio);  	//classe que gera o buffer que ser� utilizado para realizar a leitura do arquivo txt.
 			
 			String linha = lerArquivo.readLine();
@@ -53,7 +53,7 @@ public class Exercicio2 {
 		
 		// Gravando o arquivo no caminho informado pelo usuario
 		
-		FileWriter novoArquivo = new FileWriter("c:\\temp\\saida.txt"); //Cria
+		FileWriter novoArquivo = new FileWriter("/Users/victorvianasantos/Downloads/Hirens/saida.txt"); //Cria
 		BufferedWriter gravarNovoArquivo = new BufferedWriter(novoArquivo); //Classe responsavel por gerar o Buffer que ser� utilizado para realizar a escrita do txt.
 		
 		gravarNovoArquivo.write("O arquivo selecionado possui:\r\n");
