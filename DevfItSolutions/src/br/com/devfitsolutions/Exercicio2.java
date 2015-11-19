@@ -25,7 +25,7 @@ public class Exercicio2 {
 		
 		try{
 			FileReader arqvuio = new FileReader("c:\\temp\\entrada.txt");	//entrada baseado em caracteres
-			BufferedReader lerArquivo = new BufferedReader(arqvuio);  	//classe que gera o buffer que será utilizado para realizar a leitura do arquivo txt.
+			BufferedReader lerArquivo = new BufferedReader(arqvuio);  	//classe que gera o buffer que serï¿½ utilizado para realizar a leitura do arquivo txt.
 			
 			String linha = lerArquivo.readLine();
 			while (linha != null){		//Enquanto tiver linha vai rodar (valida se a variavel linha contem valor (caracteres))
@@ -54,14 +54,15 @@ public class Exercicio2 {
 		// Gravando o arquivo no caminho informado pelo usuario
 		
 		FileWriter novoArquivo = new FileWriter("c:\\temp\\saida.txt"); //Cria
-		BufferedWriter gravarNovoArquivo = new BufferedWriter(novoArquivo); //Classe responsavel por gerar o Buffer que será utilizado para realizar a escrita do txt.
+		BufferedWriter gravarNovoArquivo = new BufferedWriter(novoArquivo); //Classe responsavel por gerar o Buffer que serï¿½ utilizado para realizar a escrita do txt.
 		
 		gravarNovoArquivo.write("O arquivo selecionado possui:\r\n");
-		gravarNovoArquivo.write("Espaços em branco: " +contEspaco+ "\r\n");
+		gravarNovoArquivo.write("Espaï¿½os em branco: " +contEspaco+ "\r\n");
 		gravarNovoArquivo.write("Vogais: " +contVogais+ "\r\n");
 		gravarNovoArquivo.write("Consoantes: " +contConsoantes+ "\r\n");
 		gravarNovoArquivo.write("Palavras: " +contPalavra+ "\r\n");
-		gravarNovoArquivo.write("Linhas: " +(contConsoantes + contVogais)+ "\r\n");
+		gravarNovoArquivo.write("Letras: " +(contConsoantes + contVogais)+ "\r\n");
+		gravarNovoArquivo.write("Linhas: " +contLinha+ "\r\n");
 		
 		gravarNovoArquivo.close();  // Fecha o arquivo com os dados gravados
 		System.out.println("Arquivo gravado com sucesso!");
