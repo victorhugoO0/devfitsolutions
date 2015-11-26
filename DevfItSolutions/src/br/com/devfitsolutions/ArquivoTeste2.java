@@ -7,9 +7,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
+
+import org.omg.Messaging.SyncScopeHelper;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-
+	
 public class ArquivoTeste2 {
 	
 	public static void main(String[] args) throws IOException{
@@ -28,7 +31,7 @@ public class ArquivoTeste2 {
 		
 		try{
 			FileReader arqvuio = new FileReader(nomeArquivo);	//entrada baseado em caracteres
-			BufferedReader lerArquivo = new BufferedReader(arqvuio);  	//classe que gera o buffer que será utilizado para realizar a leitura do arquivo txt.
+			BufferedReader lerArquivo = new BufferedReader(arqvuio);  	//classe que gera o buffer que serï¿½ utilizado para realizar a leitura do arquivo txt.
 			
 			String linha = lerArquivo.readLine();
 			while (linha != null){		//Enquanto tiver linha vai rodar (valida se a variavel linha contem valor (caracteres))
@@ -60,10 +63,10 @@ public class ArquivoTeste2 {
 		destino = entrada.nextLine(); 		//Armazena caminho informado pelo usuario
 		
 		FileWriter novoArquivo = new FileWriter(destino); //Cria
-		BufferedWriter gravarNovoArquivo = new BufferedWriter(novoArquivo); //Classe responsavel por gerar o Buffer que será utilizado para realizar a escrita do txt.
+		BufferedWriter gravarNovoArquivo = new BufferedWriter(novoArquivo); //Classe responsavel por gerar o Buffer que serï¿½ utilizado para realizar a escrita do txt.
 		
 		gravarNovoArquivo.write("O arquivo aberto em " +nomeArquivo+ " possui:\r\n");
-		gravarNovoArquivo.write("Espaços em branco: " +contEspaco+ "\r\n");
+		gravarNovoArquivo.write("Espaï¿½os em branco: " +contEspaco+ "\r\n");
 		gravarNovoArquivo.write("Vogais: " +contVogais+ "\r\n");
 		gravarNovoArquivo.write("Consoantes: " +contConsoantes+ "\r\n");
 		gravarNovoArquivo.write("Palavras: " +contPalavra+ "\r\n");
