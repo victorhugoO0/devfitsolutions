@@ -1,17 +1,17 @@
 package org.dados;
 
-public class Pessoa {
+public class Acesso {
    
    private String ip;
    private String nome;
    private String data;
    
 
-   public Pessoa() {
+   public Acesso() {
       super();
    }
 
-   public Pessoa(String ip, String nome, String data) {
+   public Acesso(String ip, String nome, String data) {
 		super();
 		this.ip = ip;
 		this.nome = nome;

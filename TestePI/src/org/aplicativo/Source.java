@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import org.manipulararquivos.Arquivo;
-import org.dados.Pessoa;
+import org.dados.Acesso;
 
 public class Source {
 
    public static void main(String[] args) throws IOException {
       int op, op2;
       File arquivo = new File("./src/arquivoLog.txt");
-      List<Pessoa> lista = Arquivo.leitor(arquivo);
+      List<Acesso> lista = Arquivo.leitor(arquivo);
       do {
          op = menu();
          switch (op) {
@@ -78,14 +78,14 @@ public class Source {
 	      return op;
 	   }
 
-   public static void imprimir(List<Pessoa> lista) {
+   public static void imprimir(List<Acesso> lista) {
       for (int i = 0; i < lista.size(); i++) {
          System.out.println(lista.get(i).toString());
       }
       System.out.println();
    }
    
-   public static void estatisticaIp(List<Pessoa> lista){
+   public static void estatisticaIp(List<Acesso> lista){
 	   Scanner leia = new Scanner(System.in);
 	   String ip; 
 	   int cont = 0, total = 0;
@@ -112,7 +112,7 @@ public class Source {
 	   }
    }
    
-   public static void estatisticaGeral(List<Pessoa> lista){
+   public static void estatisticaGeral(List<Acesso> lista){
 	   Scanner entrada = new Scanner(System.in);
 	   String ip1, ip2 = "", ip3 = "", ipm = "";
 	   int cip1 = 0, cip2 = 0, cip3 = 0, total = 0, mediana = 0;

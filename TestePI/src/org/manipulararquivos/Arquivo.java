@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.dados.Pessoa;
+import org.dados.Acesso;
 
 public class Arquivo {
 	/**
@@ -17,13 +17,13 @@ public class Arquivo {
 	    * @param arquivoOrigem
 	    * @return
 	    */
-	   public static List<Pessoa> leitor(File arquivoOrigem) {
-	      List<Pessoa> listaDeLog = new ArrayList<Pessoa>();
+	   public static List<Acesso> leitor(File arquivoOrigem) {
+	      List<Acesso> listaDeLog = new ArrayList<Acesso>();
 	      try {
 	         Scanner ler = new Scanner(arquivoOrigem);
 	         
 	         while (ler.hasNext()) {
-	            Pessoa acesso = new Pessoa();
+	            Acesso acesso = new Acesso();
 	            String linhaDoArquivo = ler.nextLine();
 	            String[] dadosDoLog = linhaDoArquivo.split("-");
 	            acesso.setIp(dadosDoLog[0]);
