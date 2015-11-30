@@ -4,12 +4,7 @@ import java.util.*;
 import java.io.*;
 
 public class Arquivo {
-	/**
-	    * Faz a leitura do arquivo e retorna uma lista de pessoas. O layout do
-	    * arquivo deve ser: ip;user;data(dd/mm/aaaa);hora(hh:mm:ss)
-	    * @param arquivoOrigem
-	    * @return
-	    */
+	
 	   public static List<Acesso> leitor(File arquivoOrigem) {
 	      List<Acesso> listaDeLog = new ArrayList<Acesso>();
 	      try {

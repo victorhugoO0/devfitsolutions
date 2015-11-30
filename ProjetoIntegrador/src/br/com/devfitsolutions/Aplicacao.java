@@ -45,11 +45,11 @@ public class Aplicacao {
 		 Scanner entrada = new Scanner(System.in);
 		 int opcao;
 		 do {
-			 System.out.println("\n...::: MENU :::...");
-			 System.out.println("1 - Mostrar Log");
-			 System.out.println("2 - Estatisticas");
-			 System.out.println("0 - Sair");
-			 System.out.print("Opcao Desejada: ");
+			 System.out.println("\n>>>> MENU <<<<");
+			 System.out.println("[1] - Mostrar Log");
+			 System.out.println("[2] - Estatisticas");
+			 System.out.println("[0] - Sair");
+			 System.out.print("Opcao Desejada > ");
 			 opcao = entrada.nextInt();
 			 if (opcao > 2){
 				 System.out.println("\n>>>>>>>Opcao invalida!<<<<<<<");
@@ -62,12 +62,12 @@ public class Aplicacao {
 		 Scanner entrada = new Scanner(System.in);
 		 int op;
 		 do {
-			 System.out.println("\n...::: MENU ESTATASTICAS :::...");
-			 System.out.println("1 - Acessos e Media por IP");
-			 System.out.println("2 - Acessos e Media por user");
-			 System.out.println("3 - Media, Mediana e Moda");
-			 System.out.println("0 - Voltar ao menu anterior");
-			 System.out.print("Opcao Desejada: ");
+			 System.out.println("\n>>>> MENU ESTATASTICAS <<<<");
+			 System.out.println("[1] - Acessos e Media por IP");
+			 System.out.println("[2] - Acessos e Media por user");
+			 System.out.println("[3] - Media, Mediana e Moda");
+			 System.out.println("[0] - Voltar ao menu anterior");
+			 System.out.print("Opcao Desejada > ");
 			 op = entrada.nextInt();
 		 } while (op < 0 || op > 3);
 
@@ -86,7 +86,7 @@ public class Aplicacao {
 		 String ip; 
 		 int cont = 0, total = 0;
 		 float mediaIp, percentualIp;
-		 System.out.println("\nInforme o IP : ");
+		 System.out.println("\nInforme o IP > ");
 		 ip = entrada.next();
 
 		 for (int i = 0; i < lista.size(); i++) {
@@ -99,7 +99,7 @@ public class Aplicacao {
 			 System.out.println("Desculpe! Não existe esse IP no log!");
 		 }
 		 else{
-			 System.out.println("\n         ...::: RELATARIO POR IP :::...         ");
+			 System.out.println("\n         >>>> RELATARIO POR IP <<<<         ");
 			 System.out.println("Acessos do IP " + ip + " : " + cont + " vezes \nTotal de Acessos no Servidor : " + total + " vezes.");
 			 mediaIp = (float) ((cont)*(1.0)/(total));
 			 percentualIp = (mediaIp)*100;
@@ -115,7 +115,7 @@ public class Aplicacao {
 		 String user; 
 		 int cont = 0, total = 0;
 		 float mediaUser, percentualUser;
-		 System.out.println("\nInforme o usuario : ");
+		 System.out.println("\nInforme o usuario > ");
 		 user = entrada.next();
 
 		 for (int i = 0; i < lista.size(); i++) {
@@ -128,7 +128,7 @@ public class Aplicacao {
 			 System.out.println("Desculpe! Este usuario não acessou o servidor!");
 		 }
 		 else{
-			 System.out.println("\n         ...::: RELATARIO POR USUARIO :::...         ");
+			 System.out.println("\n         >>>> RELATARIO POR USUARIO <<<<         ");
 			 System.out.println("Acessos do usuario " + user + " : " + cont + " vezes \nTotal de Acessos no Servidor : " + total + " vezes.");
 			 mediaUser = (float) ((cont)*(1.0)/(total));
 			 percentualUser = (mediaUser)*100;
@@ -146,9 +146,9 @@ public class Aplicacao {
 		 float media1, media2, media3;
 		 ip1 = lista.get(0).getIp();
 
-		 System.out.println("\n       ...::: RELATARIO GERAL :::...       ");
+		 System.out.println("\n       >>>> RELATARIO GERAL <<<<       ");
 
-		 //PARA C�LCULO DA MODA 
+		 //PARA CALCULO DA MODA 
 		 //PEGANDO O SEGUNDO VALOR DE IP DIFERENTE
 		 for (int i = 0; i < lista.size(); i++) {
 			 if(!(ip1.equalsIgnoreCase(lista.get(i).getIp()))){
