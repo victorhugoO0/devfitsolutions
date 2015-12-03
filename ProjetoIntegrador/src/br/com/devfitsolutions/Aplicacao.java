@@ -2,9 +2,6 @@ package br.com.devfitsolutions;
 
 import java.util.*;
 import java.util.List;
-
-import org.omg.IOP.TAG_ALTERNATE_IIOP_ADDRESS;
-
 import java.io.*;
 
 public class Aplicacao {
@@ -33,9 +30,6 @@ public class Aplicacao {
 	        			estatisticaIp(lista);
 	        			break;
 	        		case 2:
-	        			estatisticaUser(lista);
-	        			break;
-	        		case 3:
 	        			estatisticaGeral(lista);
 	        			break;
 	        		}
@@ -67,12 +61,11 @@ public class Aplicacao {
 		 do {
 			 System.out.println("\n>>>> MENU ESTATASTICAS <<<<");
 			 System.out.println("[1] - Acessos e Media por IP");
-			 System.out.println("[2] - Acessos e Media por user");
-			 System.out.println("[3] - Media, Mediana e Moda");
+			 System.out.println("[2] - Media, Mediana e Moda");
 			 System.out.println("[0] - Voltar ao menu anterior");
 			 System.out.print("Opcao Desejada > ");
 			 op = entrada.nextInt();
-		 } while (op < 0 || op > 3);
+		 } while (op < 0 || op > 2);
 
 		 return op;
 	 }
@@ -110,44 +103,13 @@ public class Aplicacao {
 			 System.out.println("O Percentual de Acessos do IP " + ip + " é de " + percentualIp + " %.\n");
 		 }
 	 }
-	 
-//--------INICIA ESTATISTICA DE ACESSO POR USER------
-	 
-	 public static void estatisticaUser(List<Acesso> lista){
-		 Scanner entrada = new Scanner(System.in);
-		 String user; 
-		 int cont = 0, total = 0;
-		 float mediaUser, percentualUser;
-		 System.out.println("\nInforme o usuario > ");
-		 user = entrada.next();
-
-		 for (int i = 0; i < lista.size(); i++) {
-			 if(user.equalsIgnoreCase(lista.get(i).getNome())){
-				 cont++;
-			 }
-			 total++;
-		 }
-		 if(cont == 0){
-			 System.out.println("Desculpe! Este usuario não acessou o servidor!");
-		 }
-		 else{
-			 System.out.println("\n         >>>> RELATARIO POR USUARIO <<<<         ");
-			 System.out.println("Acessos do usuario " + user + " : " + cont + " vezes \nTotal de Acessos no Servidor : " + total + " vezes.");
-			 mediaUser = (float) ((cont)*(1.0)/(total));
-			 percentualUser = (mediaUser)*100;
-			 System.out.println("O usuario " + user + " possui media de " + mediaUser + " acessos!");
-			 System.out.println("O Percentual de Acessos do usuario " + user + " é de " + percentualUser + " %.\n");
-		 }
-	 }
-
-	 // -------TERMINA REL DE ACESSO POR USER----------
 
 	 public static void estatisticaGeral(List<Acesso> lista){
 		 Scanner entrada = new Scanner(System.in);
 		 String ip1, ip2 = "", ip3 = "";
 		 int qtdIp1 = 0, qtdIp2 = 0, qtdIp3 = 0, total = 0, mediana = 0;
 		 float media1, media2, media3;
-		 double dp1, dm1, dq1, dp2, dm2, dq2, dp3, dm3, dq3, totalDm, mediaT;
+		 double dp1, dm1, dq1, dm2, dq2, dm3, dq3, totalDm, mediaT, cv, var;
 		 ip1 = lista.get(0).getIp();
 
 		 System.out.println("\n       >>>> RELATARIO GERAL <<<<       ");
@@ -207,21 +169,36 @@ public class Aplicacao {
 		 mediaT = total /3;
 		 dm1 = (qtdIp1 - mediaT);
 		 dq1 = Math.pow(dm1, 2);
-		 //dp1 = Math.sqrt(dq1);
 		 
 		 
 		 dm2 = (qtdIp2 - mediaT);
 		 dq2 = Math.pow(dm2, 2);
-		 //dp2 = Math.sqrt(dq2);
-		 
 		 
 		 dm3 = (qtdIp3 - mediaT);
 		 dq3 = Math.pow(dm3, 2);
-		 //dp3 = Math.sqrt(dq3);
+		 
 		 totalDm = (dq1 + dq2 + dq3)/3;
 		 dp1 = Math.sqrt(totalDm);
 		 
-		 System.out.println(dp1);
+		 cv = (dp1/total)*100;
+		 var = Math.pow(dp1, 2);
+		 
+		 if (cv < 15){
+			 System.out.printf("O Coefieciente de Variação é: %.2f",cv);
+			 System.out.println("% indicando baixa dispersão!");
+			 //System.out.println("Baixa disperção!");
+		 } else if (cv >= 30){
+			 System.out.printf("Onde o Coefieciente de Variação é: %.2f",cv);
+			 System.out.println("% indicando media dispersão!");
+			 //System.out.println("Media disperção!");
+		 } else {
+			 System.out.printf("Onde o Coefieciente de Variação é: %.2f",cv);
+			 System.out.println("% indicando alta dispersão!");
+			 //System.out.println("Alta disperção!");
+		 }
+		 System.out.printf("O Desvio padrão é: %.2f\n",dp1);
+		 System.out.println("A variancia é: "+ var);
+		 
 		 
 	 }
 }
