@@ -14,7 +14,7 @@ public class Aplicacao {
 	         op = menu();
 	         switch (op) {
 	         case 1:
-	            if (lista.isEmpty()) {
+	            if (lista.isEmpty()) {  //VERIRICA SE A LISTA ESTÁ VAZIA
 	               System.out.println("Lista vazia");
 	            } else {
 	               imprimir(lista);
@@ -89,8 +89,8 @@ public class Aplicacao {
 		 System.out.println("\nInforme o IP > ");
 		 ip = entrada.next();
 
-		 for (int i = 0; i < lista.size(); i++) {
-			 if(ip.equalsIgnoreCase(lista.get(i).getIp())){
+		 for (int i = 0; i < lista.size(); i++) { //ENTRA ENQUANTO O NUMERO DE ELEMENTOS DA LISTA FOR MENOR QUE "i"
+			 if(ip.equalsIgnoreCase(lista.get(i).getIp())){  //COMPARA O IP INFORMADO C/ A POSIÇÃO ATUAL DA LISTA E COM O METODO GETIP
 				 cont++;
 			 }
 			 total++;
