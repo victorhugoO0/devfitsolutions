@@ -2,6 +2,9 @@ package br.com.devfitsolutions;
 
 import java.util.*;
 import java.util.List;
+
+import org.omg.IOP.TAG_ALTERNATE_IIOP_ADDRESS;
+
 import java.io.*;
 
 public class Aplicacao {
@@ -14,7 +17,7 @@ public class Aplicacao {
 	         op = menu();
 	         switch (op) {
 	         case 1:
-	            if (lista.isEmpty()) {  //VERIRICA SE A LISTA ESTÁ VAZIA
+	            if (lista.isEmpty()) {  //VERIRICA SE A LISTA ESTï¿½ VAZIA
 	               System.out.println("Lista vazia");
 	            } else {
 	               imprimir(lista);
@@ -90,7 +93,7 @@ public class Aplicacao {
 		 ip = entrada.next();
 
 		 for (int i = 0; i < lista.size(); i++) { //ENTRA ENQUANTO O NUMERO DE ELEMENTOS DA LISTA FOR MENOR QUE "i"
-			 if(ip.equalsIgnoreCase(lista.get(i).getIp())){  //COMPARA O IP INFORMADO C/ A POSIÇÃO ATUAL DA LISTA E COM O METODO GETIP
+			 if(ip.equalsIgnoreCase(lista.get(i).getIp())){  //COMPARA O IP INFORMADO C/ A POSIÃ‡AO ATUAL DA LISTA E COM O METODO GETIP
 				 cont++;
 			 }
 			 total++;
@@ -142,8 +145,9 @@ public class Aplicacao {
 	 public static void estatisticaGeral(List<Acesso> lista){
 		 Scanner entrada = new Scanner(System.in);
 		 String ip1, ip2 = "", ip3 = "";
-		 int cip1 = 0, cip2 = 0, cip3 = 0, total = 0, mediana = 0;
+		 int qtdIp1 = 0, qtdIp2 = 0, qtdIp3 = 0, total = 0, mediana = 0;
 		 float media1, media2, media3;
+		 double dp1, dm1, dq1, dp2, dm2, dq2, dp3, dm3, dq3, totalDm, mediaT;
 		 ip1 = lista.get(0).getIp();
 
 		 System.out.println("\n       >>>> RELATARIO GERAL <<<<       ");
@@ -167,37 +171,57 @@ public class Aplicacao {
 
 		 for (int i = 0; i < lista.size(); i++) {
 			 if(ip1.equalsIgnoreCase(lista.get(i).getIp())){
-				 cip1++;
+				 qtdIp1++;
 			 }
 			 if(ip2.equalsIgnoreCase(lista.get(i).getIp())){
-				 cip2++;
+				 qtdIp2++;
 			 }
 			 if(ip3.equalsIgnoreCase(lista.get(i).getIp())){
-				 cip3++;
+				 qtdIp3++;
 			 }
 		 }
-		 if((cip1>cip2) && (cip1>cip3)){
-			 System.out.println("\nA Moda e o IP " + ip1 + " que se repetiu " + cip1 + " vezes!");
+		 if((qtdIp1>qtdIp2) && (qtdIp1>qtdIp3)){
+			 System.out.println("\nA Moda e o IP " + ip1 + " que se repetiu " + qtdIp1 + " vezes!");
 		 }
 		 else{
-			 if((cip2>cip1) && (cip2>cip3)){
-				 System.out.println("A Moda e o IP " + ip2 + " que se repetiu " + cip2 + " vezes!");
+			 if((qtdIp2>qtdIp1) && (qtdIp2>qtdIp3)){
+				 System.out.println("A Moda e o IP " + ip2 + " que se repetiu " + qtdIp2 + " vezes!");
 			 }
 			 else{
-				 System.out.println("A Moda e o IP " + ip3 + " que se repetiu " + cip3 + " vezes!");
+				 System.out.println("A Moda e o IP " + ip3 + " que se repetiu " + qtdIp3 + " vezes!");
 			 }
 		 }
 		 //MEDIANA
 		 mediana = total/2;
 		 System.out.println("\nA mediana e o IP: " + lista.get(mediana).getIp());
 
-		 //Mï¿½DIA EM PORCENTAGEM
-		 media1 = (float)((cip1)*(1.0)/(total)*100);
-		 media2 = (float)((cip2)*(1.0)/(total)*100);
-		 media3 = (float)((cip3)*(1.0)/(total)*100);
+		 //MEDIA EM PORCENTAGEM
+		 media1 = (float)((qtdIp1)*(1.0)/(total)*100);
+		 media2 = (float)((qtdIp2)*(1.0)/(total)*100);
+		 media3 = (float)((qtdIp3)*(1.0)/(total)*100);
 		 System.out.println("\nA media do IP " + ip1 + " tem percentual de " + media1 + " %.");
 		 System.out.println("A media do IP " + ip2 + " tem percentual de " + media2 + " %.");
 		 System.out.println("A media do IP " + ip3 + " tem percentual de " + media3 + " %.\n");
+		 
+		 //CALCULANDO O DP
+		 mediaT = total /3;
+		 dm1 = (qtdIp1 - mediaT);
+		 dq1 = Math.pow(dm1, 2);
+		 //dp1 = Math.sqrt(dq1);
+		 
+		 
+		 dm2 = (qtdIp2 - mediaT);
+		 dq2 = Math.pow(dm2, 2);
+		 //dp2 = Math.sqrt(dq2);
+		 
+		 
+		 dm3 = (qtdIp3 - mediaT);
+		 dq3 = Math.pow(dm3, 2);
+		 //dp3 = Math.sqrt(dq3);
+		 totalDm = (dq1 + dq2 + dq3)/3;
+		 dp1 = Math.sqrt(totalDm);
+		 
+		 System.out.println(dp1);
 		 
 	 }
 }
