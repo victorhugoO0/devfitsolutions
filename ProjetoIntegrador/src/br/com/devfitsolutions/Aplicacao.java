@@ -17,7 +17,7 @@ public class Aplicacao {
 	         op = menu();
 	         switch (op) {
 	         case 1:
-	            if (lista.isEmpty()) {  //VERIRICA SE A LISTA EST� VAZIA
+	            if (lista.isEmpty()) {  //VERIRICA SE A LISTA ESTA VAZIA
 	               System.out.println("Lista vazia");
 	            } else {
 	               imprimir(lista);
@@ -104,7 +104,6 @@ public class Aplicacao {
 			 mediaIp = (float) ((cont)*(1.0)/(total));
 			 percentualIp = (mediaIp)*100;
 			 System.out.println("O IP " + ip + " possui média de " + mediaIp + " acessos!");
-			 //System.out.println("O Percentual de Acessos do IP " + ip + " é de " + percentualIp + " %.\n");
 			 System.out.printf("O Percentual de acessos do IP %s é de %.2f", ip, percentualIp);
 			 System.out.println("%.");
 		 }
