@@ -2,6 +2,9 @@ package br.com.devfitsolutions;
 
 import java.util.*;
 import java.util.List;
+
+import org.omg.Messaging.SyncScopeHelper;
+
 import java.io.*;
 
 public class Aplicacao {
@@ -42,14 +45,14 @@ public class Aplicacao {
 		 Scanner entrada = new Scanner(System.in);
 		 int opcao;
 		 do {
-			 System.out.println("\n>>>> MENU <<<<");
-			 System.out.println("[1] - Mostrar Log");
-			 System.out.println("[2] - Estatisticas");
+			 System.out.println("\n>>>>>>> MENU <<<<<<<");
+			 System.out.println("\n[1] - Mostrar Log");
+			 System.out.println("[2] - Estatísticas");
 			 System.out.println("[0] - Sair");
 			 System.out.print("Opcao Desejada > ");
 			 opcao = entrada.nextInt();
 			 if (opcao > 2){
-				 System.out.println("\n>>>>>>>Opcao invalida!<<<<<<<");
+				 System.out.println("\n>>>>>> Opção invalida! <<<<<<");
 			 }
 		 } while (opcao < 0 || opcao > 2);
 
@@ -59,18 +62,19 @@ public class Aplicacao {
 		 Scanner entrada = new Scanner(System.in);
 		 int op;
 		 do {
-			 System.out.println("\n>>>> MENU ESTATASTICAS <<<<");
-			 System.out.println("[1] - Acessos e Media por IP");
-			 System.out.println("[2] - Media, Mediana e Moda");
+			 System.out.println("\n>>>>>>> MENU ESTATÍSTICAS <<<<<<<");
+			 System.out.println("\n[1] - Acessos e Média por IP");
+			 System.out.println("[2] - Média, Mediana e Moda");
 			 System.out.println("[0] - Voltar ao menu anterior");
-			 System.out.print("Opcao Desejada > ");
+			 System.out.print("Opção Desejada > ");
 			 op = entrada.nextInt();
 		 } while (op < 0 || op > 2);
 
 		 return op;
 	 }
-
+	 //MOSTRA O ARQUIVO DE LOG COMPLETO
 	 public static void imprimir(List<Acesso> lista) {
+		 System.out.println("\n>>>>>>>>>>>>>>>>>>>>> ARQUIVO DE LOG <<<<<<<<<<<<<<<<<<<<\n");
 		 for (int i = 0; i < lista.size(); i++) {
 			 System.out.println(lista.get(i).toString());
 		 }
@@ -95,12 +99,14 @@ public class Aplicacao {
 			 System.out.println("Desculpe! Não existe esse IP no log!");
 		 }
 		 else{
-			 System.out.println("\n         >>>> RELATARIO POR IP <<<<         ");
-			 System.out.println("Acessos do IP " + ip + " : " + cont + " vezes \nTotal de Acessos no Servidor : " + total + " vezes.");
+			 System.out.println("\n>>>>>>>>>>>>>>>>>> RELATÓRIO POR IP <<<<<<<<<<<<<<<<<<");
+			 System.out.println("\nAcessos do IP " + ip + ": " + cont + " vezes. \nTotal de Acessos no Servidor: " + total + " vezes.");
 			 mediaIp = (float) ((cont)*(1.0)/(total));
 			 percentualIp = (mediaIp)*100;
-			 System.out.println("O IP " + ip + " possui media de " + mediaIp + " acessos!");
-			 System.out.println("O Percentual de Acessos do IP " + ip + " é de " + percentualIp + " %.\n");
+			 System.out.println("O IP " + ip + " possui média de " + mediaIp + " acessos!");
+			 //System.out.println("O Percentual de Acessos do IP " + ip + " é de " + percentualIp + " %.\n");
+			 System.out.printf("O Percentual de acessos do IP %s é de %.2f", ip, percentualIp);
+			 System.out.println("%.");
 		 }
 	 }
 
@@ -112,7 +118,7 @@ public class Aplicacao {
 		 double dp1, dm1, dq1, dm2, dq2, dm3, dq3, totalDm, mediaT, cv, var;
 		 ip1 = lista.get(0).getIp();
 
-		 System.out.println("\n       >>>> RELATARIO GERAL <<<<       ");
+		 System.out.println("\n>>>>>>>>>>>>>> RELATÓRIO GERAL <<<<<<<<<<<<<<\n");
 
 		 //PARA CALCULO DA MODA 
 		 //PEGANDO O SEGUNDO VALOR DE IP DIFERENTE
@@ -161,11 +167,15 @@ public class Aplicacao {
 		 media1 = (float)((qtdIp1)*(1.0)/(total)*100);
 		 media2 = (float)((qtdIp2)*(1.0)/(total)*100);
 		 media3 = (float)((qtdIp3)*(1.0)/(total)*100);
-		 System.out.println("\nA media do IP " + ip1 + " tem percentual de " + media1 + " %.");
-		 System.out.println("A media do IP " + ip2 + " tem percentual de " + media2 + " %.");
-		 System.out.println("A media do IP " + ip3 + " tem percentual de " + media3 + " %.\n");
 		 
-		 //CALCULANDO O DP
+		 System.out.printf("\nA média do IP %s tem percentual de %.2f", ip1, media1);
+		 System.out.println("%");
+		 System.out.printf("A média do IP %s tem percentual de %.2f", ip2, media2);
+		 System.out.println("%");
+		 System.out.printf("A média do IP %s tem percentual de %.2f", ip3, media3);
+		 System.out.println("%");
+		 
+		 //CALCULANDO O DESVIO PADRAO
 		 mediaT = total /3;
 		 dm1 = (qtdIp1 - mediaT);
 		 dq1 = Math.pow(dm1, 2);
@@ -184,7 +194,7 @@ public class Aplicacao {
 		 var = Math.pow(dp1, 2);
 		 
 		 if (cv < 15){
-			 System.out.printf("O Coefieciente de Variação é: %.2f",cv);
+			 System.out.printf("\nO Coefieciente de Variação é: %.2f",cv);
 			 System.out.println("% indicando baixa dispersão!");
 			 //System.out.println("Baixa disperção!");
 		 } else if (cv >= 30){
@@ -197,8 +207,6 @@ public class Aplicacao {
 			 //System.out.println("Alta disperção!");
 		 }
 		 System.out.printf("O Desvio padrão é: %.2f\n",dp1);
-		 System.out.println("A variancia é: "+ var);
-		 
-		 
+		 System.out.println("A variância é: "+ var);
 	 }
 }

@@ -20,7 +20,7 @@ public class Arquivo {
 	            listaDeLog.add(acesso);
 	         }
 	      } catch (FileNotFoundException e) {
-	         System.out.println("O arquivo especificado nao foi encontrado.");
+	         System.out.println("O arquivo especificado não foi encontrado.");
 	      }
 	      return listaDeLog;
 	   }

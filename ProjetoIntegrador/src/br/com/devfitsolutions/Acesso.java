@@ -44,7 +44,7 @@ public class Acesso {
 
 	@Override
 	public String toString() {
-		return "IP = " + ip + " - Usuario = " + nome + " - Data = " + data + " ] ";
+		return "IP = " + ip + " - Usuário = " + nome + " - Data = " + data + " ] ";
 	}
 
 }
